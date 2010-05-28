@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %head
+    %title="#{@global_title} | #{@title}"
+    = stylesheet_link_tag 'grid', 'style'
+    
+  %body
+    = partial :header
+    = yield
+    = partial :footer

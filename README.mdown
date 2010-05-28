@@ -1,0 +1,98 @@
+# Drafting a Website
+## with Ruby, Rack and Sinatra
+
+These instructions are meant for Snow Leopard only, Leopard users
+have an outdated version of Ruby.
+
+### Gems are like tiny pieces of software. Let's steal a few.
+
+1. Open Terminal
+   Do this with Spotlight or find Terminal in Applications > Utilities
+
+2. Update your Ruby with `sudo gem update --system`
+   Terminal will ask for your password. Note that although you'll type it in, 
+   no characters will appear.
+   
+3. Type `sudo gem install bundler`
+
+### Toolz
+
+Dreamweaver *sux*, really. Instead, get TextMate from http://macromates.com.
+Download it, move it to your Applications folder and onto your Dock.          
+Open it, and dismiss the Trial window for now.
+Then click `TextMate > Preferences`. Then `Advanced` and check `Save files when focus is lost`.
+
+### Get ready.
+
+1. Download this package (there's a download link up top, it reads "Download Source"). 
+
+2. Unzip it with the Finder. Rename the folder to your site's name, like "coolsite.com".
+
+3. In **Terminal**, type `cd` and then a space. Drag your folder into Terminal and press enter/return. 
+
+4. Now type `bundle install`, and press enter.
+   This installs the rest of your gems.
+
+4. Finally, type `shotgun` and press enter.0
+   Your site will startup, you can view it by visiting `http://localhost:9393/` in your browser.     
+
+### Get working.
+
+* Drag your site folder onto TextMate's icon. It will open.
+  Your "pages" are found in the `views` folder. The `public` folder is for your images, stylesheets (css), and javascript.
+   
+#### Make a new page.
+
+* The biggest thing to remember is "DRY", or Don't Repeat Yourself. Typing in extra code is boring –&nbsp; you could 
+  be eating lunch instead! Unlike traditional plain HTML sites, your footer/header/navigation/etc. are in separate files,
+  so you only update them once. Your `routes.rb` file tells your site how to behave. 
+
+1. Open routes.rb. Let's say we're making a contact page with a web form. 
+   Our routes are defined with HTTP "methods", like GET. GET is what it sounds like, it's *getting* a page
+   to display.
+
+2. Create a new route by copy/pasting the following:       
+    
+        get '/contact' do
+          "Hello World"
+        end  
+   
+   Now type `http://localhost:9393/contact` into your browser. You'll see "Hello World".
+   That's cool and all, but you don't just want blank text.
+
+3. Create your first "view". A "view" contains the content for your site.
+   Make a new file in the `views` folder called `contact.haml`.
+   *Haml is like shortened designer-friendly HTML*
+   
+       %h1 Contact Me
+       %form{:action => "/contact", :method => "post"}
+         %input{:type => "text", :name => "name", :placeholder => "Your Name"}
+         %input{:type => "text", :name => "subject", :placeholder => "Subject"}
+         %textarea{:name => "message"}
+           Type your message...
+         %inout{:type => "submit", :value => "Send Message"}
+
+4. Back in `routes.rb`, remove "Hello World" and replace it with `haml :contact`
+   Now, reload your browser (`http://localhost:9393/contact`). You'll see our 
+   contact form, **and** the header and footer.
+
+5. We can even make the contact page work. Again in `routes.rb`, add the following:
+
+       post '/contact' do
+         Pony.mail :to => "Your Name <yourEmailAddress@example.com>",
+                   :from => params[:name] + "<no-replies@yoursitename.com>",
+                   :subject => params[:subject],
+                   :body => params[:message],
+         
+         redirect "/"
+       end                                   
+       
+   Remember to fill in the to/from information with valid e-mails and addresses.
+   
+Voila! You just made a page and an action on your new site. 
+         
+
+
+
+
+

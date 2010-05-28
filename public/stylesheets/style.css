@@ -1,3 +1,53 @@
 html {
-  font-family:'Helvetica Neue', Helvetica, Arial;
+  font-family:'Helvetica Neue', Helvetica, Arial;  
+  background-color:#F2F2F2;
 }
+
+code {
+  color:#fff;
+  background-color:rgba(0,0,0,.15);
+  padding:1px;
+}  
+
+input, textarea {
+  display:block;
+}   
+   
+/* Paragraph Styling */
+p {
+  
+}                      
+
+  p.minor {
+    font-size:11px;
+  }         
+  
+  p.important {         
+    padding:2px;
+    background-color:rgba(190,0,6,.5);
+  }                                   
+  
+  p.inline {
+    display:inline-block;
+  } 
+
+/* Unordered List */
+ul { 
+
+}
+
+  ul.inline li { /* An "inline" list is where all it's list items are in an horizontal line. */
+    display:inline-block;
+  }
+
+
+.header, .footer {
+  background-color:rgba(0,0,0,.4);
+  text-shadow:#000 0px 1px 1px;
+  margin-bottom:10px;  
+  color:#fff;
+  padding:1em 0em;
+  text-align:center;            
+  font-weight:bold;
+}   
+

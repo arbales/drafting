@@ -1,0 +1,29 @@
+=# The container (of 12 columns) begins your grid system. 
+=# The peice below creates a div with a class. It's outputted form is:
+=# <div class="grid_12">
+.container_12
+
+	=# This next peice starts the "header" block of your site. Think of it
+	=# As a "spatial area" of a grid, it adds background-color and area-wide
+	=# styles, but does not itself have a size.
+	.header
+
+		=# Your "banner" block takes up 12 grid units.
+		.banner.grid_12
+			%p 
+				This paragraph is in 
+				=succeed "." do 
+					%code views/_header.haml
+				You might put a header or navigation or something here.
+      
+			%p.minor.important.inline
+				= succeed "." do
+					It is rendered by every page by
+					%code views/layout.haml
+				It starts your grid with a big
+				%code div
+				represented by
+				%code .container_12
+
+		=# Notice the change in indentation between the lines above and below.
+		=# .navigation is at the same level as .banner.

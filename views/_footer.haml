@@ -1,0 +1,16 @@
+=# Your "footer" block takes up 12 grid units.
+.footer.grid_12
+	%p 
+		This paragraph is in 
+		=succeed "." do 
+			%code views/_footer.haml
+		You might put a header or navigation or something here.
+
+	%p.minor.important.inline
+		= succeed "." do
+			It is rendered by every page by
+			%code views/layout.haml
+		It starts your grid with a big
+		%code div
+		represented by
+		%code .container_12       

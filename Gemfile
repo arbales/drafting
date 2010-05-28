@@ -1,0 +1,6 @@
+source "http://rubygems.org"
+gem "sinatra"
+gem "haml"
+gem "sinatra_more"  
+gem "shotgun"
+gem "pony"
